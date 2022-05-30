@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <group android:checkableBehavior="single"
+        tools:showIn="navigation_view">
+        <item android:id="@+id/nav_message"
+            android:icon="@drawable/ic_baseline_add_24"
+            android:title="Test"/>
+        <item android:id="@+id/nav_clock"
+            android:icon="@drawable/ic_baseline_access_time_24"
+            android:title="time"/>
+        <item android:id="@+id/nav_train"
+            android:icon="@drawable/ic_baseline_directions_railway_24"
+            android:title="train"/>
+
+    </group>
+
+    <item android:title="Outside Group">
+        <menu>
+            <item android:id="@+id/hello" android:title="testing"/>
+        </menu>
+    </item>
+</menu>

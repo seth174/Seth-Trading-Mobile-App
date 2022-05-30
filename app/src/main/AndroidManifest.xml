@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SethsTradingApplication">
         <activity
+            android:name=".HomePageActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
