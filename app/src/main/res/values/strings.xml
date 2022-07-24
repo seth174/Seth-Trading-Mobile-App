@@ -6,4 +6,23 @@
     <string name="sing_up">Sign Up</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="ticker_label">Ticker</string>
+    <string name="current_price_label">Current Price</string>
+    <string name="daily_gain_label">Daily Gain</string>
+    <string name="daily_percent_change_label">Daily Percent Change</string>
+    <string name="quantity_label">Quantity</string>
+    <string name="buying_price_label">Buying Price</string>
+    <string name="total_amount_label">Total Amount</string>
+    <string name="net_gain_label">Net Gain</string>
+    <string name="percent_change_label">Percent Change</string>
+
+    <string name="one_day_label">1d</string>
+    <string name="one_week_label">1w</string>
+    <string name="one_month_label">1m</string>
+    <string name="three_month_label">3m</string>
+    <string name="six_month_label">6m</string>
+    <string name="one_year_label">1y</string>
 </resources>
