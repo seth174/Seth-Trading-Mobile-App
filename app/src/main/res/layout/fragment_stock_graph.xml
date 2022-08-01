@@ -1,12 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context=".StockGraphFragment">
 
-<com.jjoe64.graphview.GraphView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/graphStock"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="@string/one_day_label"
+            app:layout_constraintBottom_toBottomOf="@+id/button"
+            app:layout_constraintEnd_toStartOf="@+id/button"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="@string/one_week_label"
+            app:layout_constraintBottom_toBottomOf="@+id/button3"
+            app:layout_constraintEnd_toStartOf="@+id/button3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button2" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="@string/one_month_label"
+            app:layout_constraintBottom_toBottomOf="@+id/button4"
+            app:layout_constraintEnd_toStartOf="@+id/button4"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="@string/three_month_label"
+            app:layout_constraintBottom_toBottomOf="@+id/button5"
+            app:layout_constraintEnd_toStartOf="@+id/button5"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button3" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="@string/six_month_label"
+            app:layout_constraintBottom_toBottomOf="@+id/button6"
+            app:layout_constraintEnd_toStartOf="@+id/button6"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button4" />
+
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="@string/one_year_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/graphStock"
+            android:layout_width="409dp"
+            android:layout_height="435dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button3"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>

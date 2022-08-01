@@ -19,4 +19,8 @@
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@color/primary</item>
     </style>
+
+    <style name="Button.RED" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@color/warning</item>
+    </style>
 </resources>

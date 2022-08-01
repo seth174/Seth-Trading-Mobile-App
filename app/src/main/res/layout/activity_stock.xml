@@ -1,88 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StockActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <TextView
-            android:textSize="40sp"
-            android:id="@+id/textviewMainpageStockName"
+    <TextView
+        android:id="@+id/textview_mainpage_stock_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="76dp"
+        android:text="TextView"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout_stocks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="16dp" />
+            android:text="Info" />
 
-        <Button
-            android:text="@string/one_year_label"
-            android:id="@+id/button5"
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button4"
-            app:layout_constraintTop_toBottomOf="@+id/textviewMainpageStockName" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Graph" />
 
-        <Button
-            android:text="@string/six_month_label"
-            android:id="@+id/button4"
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            app:layout_constraintEnd_toStartOf="@+id/button5"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button3"
-            app:layout_constraintTop_toTopOf="@+id/button5" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="News" />
+    </com.google.android.material.tabs.TabLayout>
 
-        <Button
-            android:text="@string/one_month_label"
-            android:id="@+id/button3"
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            app:layout_constraintEnd_toStartOf="@+id/button4"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button"
-            app:layout_constraintTop_toTopOf="@+id/button4" />
+    <TextView
+        android:id="@+id/textview_mainpage_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/button_buy_stock_activity"
+        app:layout_constraintTop_toTopOf="@+id/button_buy_stock_activity" />
 
-        <Button
-            android:id="@+id/button"
-            android:text="@string/one_week_label"
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            app:layout_constraintEnd_toStartOf="@+id/button3"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button2"
-            app:layout_constraintTop_toTopOf="@+id/button3" />
+    <TextView
+        android:id="@+id/textview_mainpage_percentchange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/button_buy_stock_activity"
+        app:layout_constraintTop_toBottomOf="@+id/textview_mainpage_price" />
 
-        <Button
-            android:id="@+id/button2"
-            android:text="@string/one_day_label"
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            app:layout_constraintEnd_toStartOf="@+id/button"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/button" />
+    <Button
+        android:id="@+id/button_buy_stock_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/success"
+        android:text="Buy"
+        android:theme="@style/Button.RED"
+        app:layout_constraintEnd_toStartOf="@+id/button_sell_stock_activity"
+        app:layout_constraintTop_toBottomOf="@+id/tablayout_stocks" />
 
-        <FrameLayout
-            android:id="@+id/fragment_graph"
-            android:layout_width="350dp"
-            android:layout_height="500dp"
-            android:layout_marginTop="76dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textviewMainpageStockName" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/button_sell_stock_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/warning"
+        android:text="Sell"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button_buy_stock_activity" />
 
-</ScrollView>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_page"
+        android:name="com.sethfagen.sethstradingapplication.StockInfoFragment"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_mainpage_percentchange" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
