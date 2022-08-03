@@ -11,65 +11,65 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button_one_day"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="@string/one_day_label"
-            app:layout_constraintBottom_toBottomOf="@+id/button"
-            app:layout_constraintEnd_toStartOf="@+id/button"
+            app:layout_constraintBottom_toBottomOf="@+id/button_one_week"
+            app:layout_constraintEnd_toStartOf="@+id/button_one_week"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_one_week"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="@string/one_week_label"
-            app:layout_constraintBottom_toBottomOf="@+id/button3"
-            app:layout_constraintEnd_toStartOf="@+id/button3"
+            app:layout_constraintBottom_toBottomOf="@+id/button_one_month"
+            app:layout_constraintEnd_toStartOf="@+id/button_one_month"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button2" />
+            app:layout_constraintStart_toEndOf="@+id/button_one_day" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/button_one_month"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="@string/one_month_label"
-            app:layout_constraintBottom_toBottomOf="@+id/button4"
-            app:layout_constraintEnd_toStartOf="@+id/button4"
+            app:layout_constraintBottom_toBottomOf="@+id/button_three_moth"
+            app:layout_constraintEnd_toStartOf="@+id/button_three_moth"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button" />
+            app:layout_constraintStart_toEndOf="@+id/button_one_week" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/button_three_moth"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="@string/three_month_label"
-            app:layout_constraintBottom_toBottomOf="@+id/button5"
-            app:layout_constraintEnd_toStartOf="@+id/button5"
+            app:layout_constraintBottom_toBottomOf="@+id/button_six_month"
+            app:layout_constraintEnd_toStartOf="@+id/button_six_month"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button3" />
+            app:layout_constraintStart_toEndOf="@+id/button_one_month" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/button_six_month"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="@string/six_month_label"
-            app:layout_constraintBottom_toBottomOf="@+id/button6"
-            app:layout_constraintEnd_toStartOf="@+id/button6"
+            app:layout_constraintBottom_toBottomOf="@+id/button_one_year"
+            app:layout_constraintEnd_toStartOf="@+id/button_one_year"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button4" />
+            app:layout_constraintStart_toEndOf="@+id/button_three_moth" />
 
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/button_one_year"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="@string/one_year_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button5"
+            app:layout_constraintStart_toEndOf="@+id/button_six_month"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.jjoe64.graphview.GraphView
@@ -81,7 +81,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button3"
+            app:layout_constraintTop_toBottomOf="@+id/button_one_month"
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

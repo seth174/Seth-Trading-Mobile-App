@@ -7,11 +7,12 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.sethfagen.sethstradingapplication.databinding.ActivityStockBinding;
 
-public class StockActivity extends AppCompatActivity {
+public class StockActivity extends AppCompatActivity implements StockGraphFragment.OnDataPass {
 
     private ActivityStockBinding binding;
 
@@ -21,10 +22,13 @@ public class StockActivity extends AppCompatActivity {
 
 
     public static final String EXTRA_SEARCH_TICKER = "com.sethfagen.sethstradingapplication.EXTRA_SEARCH_TICKER";
+    public static final String EXTRA_DAYS = "com.sethfagen.sethstradingapplication.EXTRA_DAYS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         binding = ActivityStockBinding.inflate(getLayoutInflater());
 
         setContentView(binding.getRoot());
@@ -53,7 +57,7 @@ public class StockActivity extends AppCompatActivity {
                         break;
                     }
                 }
-                openFragment(fragment, ticker);
+                openFragment(fragment, ticker, null);
             }
 
             @Override
@@ -67,16 +71,24 @@ public class StockActivity extends AppCompatActivity {
             }
         });
 
-        openFragment(new StockInfoFragment(), ticker);
+        openFragment(new StockInfoFragment(), ticker, null);
 
     }
 
-    public void openFragment(Fragment fragment, String ticker){
+    public void openFragment(Fragment fragment, String ticker, String days){
 
         Bundle bundle = new Bundle();
         bundle.putString(EXTRA_SEARCH_TICKER, ticker);
+        bundle.putString(EXTRA_DAYS, days == null ? "30" : days);
         fragment.setArguments(bundle);
 
+
+
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_page, fragment).commit();
+    }
+
+    @Override
+    public void onDataPass(String days, String ticker) {
+        openFragment(new StockGraphFragment(), ticker, days);
     }
 }

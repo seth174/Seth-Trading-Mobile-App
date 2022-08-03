@@ -1,7 +1,10 @@
 package com.sethfagen.sethstradingapplication;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.text.format.DateFormat;
@@ -25,6 +28,7 @@ import com.sethfagen.sethstradingapplication.remote_database.RetrofitClient;
 import com.sethfagen.sethstradingapplication.remote_database.WebInterface;
 import com.sethfagen.sethstradingapplication.remote_database.models.StockGraph;
 
+import java.io.Console;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
@@ -36,11 +40,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class StockGraphFragment extends Fragment {
+public class StockGraphFragment extends Fragment implements View.OnClickListener {
+
+    OnDataPass dataPasser;
 
     public interface OnDataPass{
-        public void onDataPass(int days);
-
+        public void onDataPass(String days, String ticker);
     }
 
     private FragmentStockGraphBinding binding;
@@ -53,13 +58,16 @@ public class StockGraphFragment extends Fragment {
 
         GraphView graphStock = binding.graphStock;
 
+        binding.buttonOneDay.setOnClickListener(this);
+
         graphStock.setTitle("TEST");
 
         WebInterface webInterface = RetrofitClient.getInstance().getWebInterface();
 
         String[] words = getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER).split(" ");
         String ticker = words[words.length - 1];
-        Call<StockGraph> call = webInterface.getStockGraph(ticker, "30");
+        String days = getArguments().getString(StockActivity.EXTRA_DAYS, "30");
+        Call<StockGraph> call = webInterface.getStockGraph(ticker, days);
         call.enqueue(new Callback<StockGraph>() {
             @Override
             public void onResponse(Call<StockGraph> call, Response<StockGraph> response) {
@@ -69,10 +77,7 @@ public class StockGraphFragment extends Fragment {
                     DataPoint[] dataPoints = new DataPoint[stocks.getDatePriceMap().keySet().size()];
 
                     int count = 0;
-                    final java.text.DateFormat dateTimeFormatter = DateFormat.getDateFormat(getActivity());
-                    double min = dateTimeFormatter.getCalendar().getTime().getTime();
                     for(Date s : stocks.getDatePriceMap().keySet()){
-                        min = min > s.getTime() ? s.getTime() : min;
                         dataPoints[count] = new DataPoint((double)s.getTime(), stocks.getDatePriceMap().get(s));
                         //dataPoints[count] = new DataPoint(count, stocks.getDatePriceMap().get(s));
                         count += 1;
@@ -88,7 +93,7 @@ public class StockGraphFragment extends Fragment {
                     graphStock.getViewport().setMinY(stocks.getMin());
                     graphStock.getViewport().setMaxY(stocks.getMax());
                     graphStock.getViewport().setMaxX(Instant.now().toEpochMilli());
-                    graphStock.getViewport().setMinX(Instant.now().minus(Duration.ofDays(30)).toEpochMilli());
+                    graphStock.getViewport().setMinX(Instant.now().minus(Duration.ofDays(365)).toEpochMilli());//fix this
 //
                     graphStock.getViewport().setYAxisBoundsManual(true);
                     graphStock.getViewport().setXAxisBoundsManual(true);
@@ -140,4 +145,43 @@ public class StockGraphFragment extends Fragment {
 
         return binding.getRoot();
     }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        dataPasser = (OnDataPass) context;
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.button_one_day:{
+                Log.d("CSC", "HERERERERER");
+                dataPasser.onDataPass("365", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
+                return;
+            }
+            case R.id.button_one_week:{
+
+                return;
+            }
+            case R.id.button_one_month:{
+
+                return;
+            }
+            case R.id.button_three_moth:{
+
+                return;
+            }
+            case R.id.button_six_month:{
+
+                return;
+            }
+            case R.id.button_one_year:{
+
+                return;
+            }
+        }
+    }
+
 }
