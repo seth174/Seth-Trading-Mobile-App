@@ -1,12 +1,14 @@
 package com.sethfagen.sethstradingapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
@@ -16,13 +18,23 @@ public class StockActivity extends AppCompatActivity implements StockGraphFragme
 
     private ActivityStockBinding binding;
 
+    public static final String EXTRA_SEARCH_TICKER = "com.sethfagen.sethstradingapplication.EXTRA_SEARCH_TICKER";
+    public static final String EXTRA_DAYS = "com.sethfagen.sethstradingapplication.EXTRA_DAYS";
+
     private final int INFO_TAB = 0;
     private final int GRAPH_TAB = 1;
     private final int NEWS_TAB= 2;
 
-
-    public static final String EXTRA_SEARCH_TICKER = "com.sethfagen.sethstradingapplication.EXTRA_SEARCH_TICKER";
-    public static final String EXTRA_DAYS = "com.sethfagen.sethstradingapplication.EXTRA_DAYS";
+    private View.OnClickListener button_buy_stock_clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            PurchaseStockFragment dialog = new PurchaseStockFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString(EXTRA_SEARCH_TICKER, getIntent().getStringExtra(SearchFragment.TICKER_EXTRA));
+            dialog.setArguments(bundle);
+            dialog.showNow(getSupportFragmentManager(), "Fragment");
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +46,9 @@ public class StockActivity extends AppCompatActivity implements StockGraphFragme
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
+
+
+        binding.buttonBuyStockActivity.setOnClickListener(button_buy_stock_clickListener);
 
         String ticker = intent.getStringExtra(SearchFragment.TICKER_EXTRA);
 
@@ -81,9 +96,6 @@ public class StockActivity extends AppCompatActivity implements StockGraphFragme
         bundle.putString(EXTRA_SEARCH_TICKER, ticker);
         bundle.putString(EXTRA_DAYS, days == null ? "30" : days);
         fragment.setArguments(bundle);
-
-
-
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_page, fragment).commit();
     }
 

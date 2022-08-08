@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import com.sethfagen.sethstradingapplication.AccountHomeFragment;
+import com.sethfagen.sethstradingapplication.HomePageActivity;
 import com.sethfagen.sethstradingapplication.R;
 import com.sethfagen.sethstradingapplication.remote_database.RetrofitClient;
 import com.sethfagen.sethstradingapplication.remote_database.request_models.PurchaseSellRequest;
@@ -18,14 +21,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BuyStockUtility {
+public class BuyStockUtility{
     private PurchaseSellRequest request;
     private Activity activity;
 
     private DialogInterface.OnClickListener button_return_home_clickListener = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
-            ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AccountHomeFragment()).commit();
+//            ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AccountHomeFragment()).commit();
         }
     };
 

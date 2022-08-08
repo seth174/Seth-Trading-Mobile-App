@@ -59,6 +59,11 @@ public class StockGraphFragment extends Fragment implements View.OnClickListener
         GraphView graphStock = binding.graphStock;
 
         binding.buttonOneDay.setOnClickListener(this);
+        binding.buttonOneWeek.setOnClickListener(this);
+        binding.buttonOneMonth.setOnClickListener(this);
+        binding.buttonThreeMoth.setOnClickListener(this);
+        binding.buttonSixMonth.setOnClickListener(this);
+        binding.buttonOneYear.setOnClickListener(this);
 
         graphStock.setTitle("TEST");
 
@@ -93,8 +98,7 @@ public class StockGraphFragment extends Fragment implements View.OnClickListener
                     graphStock.getViewport().setMinY(stocks.getMin());
                     graphStock.getViewport().setMaxY(stocks.getMax());
                     graphStock.getViewport().setMaxX(Instant.now().toEpochMilli());
-                    graphStock.getViewport().setMinX(Instant.now().minus(Duration.ofDays(365)).toEpochMilli());//fix this
-//
+                    graphStock.getViewport().setMinX(Instant.now().minus(Duration.ofDays(Integer.parseInt(days))).toEpochMilli());
                     graphStock.getViewport().setYAxisBoundsManual(true);
                     graphStock.getViewport().setXAxisBoundsManual(true);
 
@@ -158,28 +162,28 @@ public class StockGraphFragment extends Fragment implements View.OnClickListener
         switch (view.getId()){
             case R.id.button_one_day:{
                 Log.d("CSC", "HERERERERER");
-                dataPasser.onDataPass("365", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
-                return;
+                dataPasser.onDataPass("1", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
+                break;
             }
             case R.id.button_one_week:{
-
-                return;
+                dataPasser.onDataPass("7", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
+                break;
             }
             case R.id.button_one_month:{
-
-                return;
+                dataPasser.onDataPass("30", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
+                break;
             }
             case R.id.button_three_moth:{
-
-                return;
+                dataPasser.onDataPass("90", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
+                break;
             }
             case R.id.button_six_month:{
-
-                return;
+                dataPasser.onDataPass("180", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
+                break;
             }
             case R.id.button_one_year:{
-
-                return;
+                dataPasser.onDataPass("365", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
+                break;
             }
         }
     }

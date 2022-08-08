@@ -2,6 +2,7 @@ package com.sethfagen.sethstradingapplication.remote_database;
 
 import com.sethfagen.sethstradingapplication.remote_database.models.Stock;
 import com.sethfagen.sethstradingapplication.remote_database.models.StockGraph;
+import com.sethfagen.sethstradingapplication.remote_database.models.StockNews;
 import com.sethfagen.sethstradingapplication.remote_database.models.StockOverviewInfo;
 import com.sethfagen.sethstradingapplication.remote_database.models.User;
 import com.sethfagen.sethstradingapplication.remote_database.request_models.PurchaseSellRequest;
@@ -41,5 +42,8 @@ public interface WebInterface {
 
     @POST("stocks_sold_per_people/create")
     Call<Float> sellStock(@Body PurchaseSellRequest request);
+
+    @GET("stocks/company_news")
+    Call<List<StockNews>> getCompanyNews(@Query("ticker") String ticker);
 
 }
