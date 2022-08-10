@@ -51,7 +51,7 @@
         app:layout_constraintTop_toTopOf="@+id/button_buy_stock_activity" />
 
     <TextView
-        android:id="@+id/textview_mainpage_percentchange"
+        android:id="@+id/textview_mainpage_price_change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -87,6 +87,6 @@
         android:layout_height="550dp"
         android:layout_marginTop="56dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_mainpage_percentchange" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_mainpage_price_change" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

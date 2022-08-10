@@ -42,10 +42,10 @@ import retrofit2.Response;
 
 public class StockGraphFragment extends Fragment implements View.OnClickListener {
 
-    OnDataPass dataPasser;
+    private OnDatePass dataPasser;
 
-    public interface OnDataPass{
-        public void onDataPass(String days, String ticker);
+    public interface OnDatePass{
+        public void OnDatePass(String days, String ticker);
     }
 
     private FragmentStockGraphBinding binding;
@@ -153,8 +153,7 @@ public class StockGraphFragment extends Fragment implements View.OnClickListener
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        dataPasser = (OnDataPass) context;
-
+        dataPasser = (OnDatePass) context;
     }
 
     @Override
@@ -162,27 +161,27 @@ public class StockGraphFragment extends Fragment implements View.OnClickListener
         switch (view.getId()){
             case R.id.button_one_day:{
                 Log.d("CSC", "HERERERERER");
-                dataPasser.onDataPass("1", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
+                dataPasser.OnDatePass("1", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
                 break;
             }
             case R.id.button_one_week:{
-                dataPasser.onDataPass("7", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
+                dataPasser.OnDatePass("7", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
                 break;
             }
             case R.id.button_one_month:{
-                dataPasser.onDataPass("30", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
+                dataPasser.OnDatePass("30", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
                 break;
             }
             case R.id.button_three_moth:{
-                dataPasser.onDataPass("90", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
+                dataPasser.OnDatePass("90", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
                 break;
             }
             case R.id.button_six_month:{
-                dataPasser.onDataPass("180", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
+                dataPasser.OnDatePass("180", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
                 break;
             }
             case R.id.button_one_year:{
-                dataPasser.onDataPass("365", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
+                dataPasser.OnDatePass("365", getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER));
                 break;
             }
         }

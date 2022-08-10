@@ -43,14 +43,14 @@ public class SellStockUtility {
                     builder.setTitle("Stock Sold")
                             .setMessage(String.valueOf(request.getQuantity()) + " stock of " +
                                     request.getStock() + " was sold at " + String.valueOf(response.body()))
-                            .setPositiveButton("OK", button_return_home_clickListener);
+                            .setPositiveButton("OK", null);
                     builder.show();
 
                 }
                 else{
                     builder.setTitle("Error Something went wrong")
                             .setMessage("Either not enough stocks owned or wrong Ticker")
-                            .setNeutralButton("Return Home", button_return_home_clickListener)
+                            .setNeutralButton("Return Home", null)
                             .setPositiveButton("Stay on Page", null);
                     builder.show();
                 }

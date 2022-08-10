@@ -13,8 +13,9 @@ import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.sethfagen.sethstradingapplication.databinding.ActivityStockBinding;
+import com.sethfagen.sethstradingapplication.remote_database.retrofit_calls.StockInfoUtility;
 
-public class StockActivity extends AppCompatActivity implements StockGraphFragment.OnDataPass {
+public class StockActivity extends AppCompatActivity implements StockGraphFragment.OnDatePass {
 
     private ActivityStockBinding binding;
 
@@ -36,6 +37,17 @@ public class StockActivity extends AppCompatActivity implements StockGraphFragme
         }
     };
 
+    private View.OnClickListener button_sell_stock_clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            SellStockFragment dialog = new SellStockFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString(EXTRA_SEARCH_TICKER, getIntent().getStringExtra(SearchFragment.TICKER_EXTRA));
+            dialog.setArguments(bundle);
+            dialog.showNow(getSupportFragmentManager(), "Fragment");
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,12 +59,20 @@ public class StockActivity extends AppCompatActivity implements StockGraphFragme
 
         Intent intent = getIntent();
 
-
         binding.buttonBuyStockActivity.setOnClickListener(button_buy_stock_clickListener);
+        binding.buttonSellStockActivity.setOnClickListener(button_sell_stock_clickListener);
 
         String ticker = intent.getStringExtra(SearchFragment.TICKER_EXTRA);
 
+        String[] search = ticker.split(" ");
+        String actualTicker = search[search.length - 1];
+
         binding.textviewMainpageStockName.setText(ticker);
+
+
+
+        StockInfoUtility infoUtility = new StockInfoUtility(this, actualTicker, binding.textviewMainpagePrice, binding.textviewMainpagePriceChange);
+        infoUtility.setStockInfo();
 
         binding.tablayoutStocks.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -100,7 +120,7 @@ public class StockActivity extends AppCompatActivity implements StockGraphFragme
     }
 
     @Override
-    public void onDataPass(String days, String ticker) {
+    public void OnDatePass(String days, String ticker) {
         openFragment(new StockGraphFragment(), ticker, days);
     }
 }

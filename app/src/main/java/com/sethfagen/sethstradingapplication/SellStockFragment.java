@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.sethfagen.sethstradingapplication.databinding.FragmentSellStockBinding;
@@ -17,7 +18,7 @@ import com.sethfagen.sethstradingapplication.remote_database.retrofit_calls.Inde
 import com.sethfagen.sethstradingapplication.remote_database.retrofit_calls.SellStockUtility;
 import com.sethfagen.sethstradingapplication.remote_database.retrofit_calls.StockInfoUtility;
 
-public class SellStockFragment extends Fragment {
+public class SellStockFragment extends DialogFragment implements View.OnFocusChangeListener {
     private FragmentSellStockBinding binding;
 
     private View.OnClickListener button_submit_sale_clickListener = new View.OnClickListener() {
@@ -40,16 +41,14 @@ public class SellStockFragment extends Fragment {
         }
     };
 
-    private View.OnFocusChangeListener edit_text_stock_picked_focusChangeListener = new View.OnFocusChangeListener() {
+    private View.OnClickListener button_cancel_purchase_clickListener = new View.OnClickListener() {
         @Override
-        public void onFocusChange(View view, boolean hasFocus) {
-            if(!hasFocus){
-                String sentence = binding.editTextStocks.getText().toString();
-                String[] arr = sentence.split(" ");
-                String ticker = arr[arr.length - 1];
+        public void onClick(View view) {
+            if(getDialog() == null){
 
-                StockInfoUtility helper = new StockInfoUtility(getActivity(), binding.textviewSalePrice, binding.textviewDayGainSale, ticker, null);
-                helper.setStockInfo();
+            }
+            else{
+                getDialog().dismiss();
             }
         }
     };
@@ -65,15 +64,36 @@ public class SellStockFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.editTextStocks.setOnFocusChangeListener(edit_text_stock_picked_focusChangeListener);
+        binding.editTextStocks.setOnFocusChangeListener(this);
 
         binding.buttonOrderSale.setOnClickListener(button_submit_sale_clickListener);
 
         IndexStockUtility indexStockUtility = new IndexStockUtility(getActivity(), binding.editTextStocks);
         indexStockUtility.setStockList();
+
+        binding.buttonCancelSale.setOnClickListener(button_cancel_purchase_clickListener);
+
+
+        if(getArguments() != null){
+            String ticker = getArguments().getString(StockActivity.EXTRA_SEARCH_TICKER);
+            binding.editTextStocks.setText(ticker);
+            onFocusChange(null, false);
+        }
     }
 
     public boolean checkInput(String quantity, String ticker){
         return quantity.length() != 0 && ticker.length() != 0;
+    }
+
+    @Override
+    public void onFocusChange(View view, boolean hasFocus) {
+        if(!hasFocus){
+            String sentence = binding.editTextStocks.getText().toString();
+            String[] arr = sentence.split(" ");
+            String ticker = arr[arr.length - 1];
+
+            StockInfoUtility helper = new StockInfoUtility(getActivity(), binding.textviewSalePrice, binding.textviewDayGainSale, ticker, null);
+            helper.setStockInfo();
+        }
     }
 }

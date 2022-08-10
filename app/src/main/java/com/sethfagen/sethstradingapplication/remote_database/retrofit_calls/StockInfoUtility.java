@@ -38,6 +38,13 @@ public class StockInfoUtility {
         this.name = name;
     }
 
+    public StockInfoUtility(Context context, String ticker, TextView dayLowPrice, TextView priceChange) {
+        this.ticker = ticker;
+        this.context = context;
+        this.price = dayLowPrice;
+        this.priceChange = priceChange;
+    }
+
     public StockInfoUtility(Context context, TextView price, TextView priceChange, String ticker, TextView priceChangePercent, TextView name, TextView tickerTextView, TextView dayHighPrice, TextView dayLowPrice, TextView dayOpenPrice, TextView dayPreviousClosePrice) {
         this.context = context;
         this.price = price;
@@ -62,6 +69,7 @@ public class StockInfoUtility {
                 if(response.isSuccessful()){
                     Stock stock = response.body();
                     Log.d("CSC", "The name " + String.valueOf(stock.getId()));
+                    Log.d("CSC", "The name " + String.valueOf(stock.getMostRecentPrice()));
                     price.setText(String.valueOf(stock.getMostRecentPrice()));
                     priceChange.setText(String.valueOf(stock.getDayChange()));
                     if(stock.getDayChange() < 0) priceChange.setTextColor(context.getResources().getColor(R.color.warning, context.getTheme()));
@@ -69,7 +77,7 @@ public class StockInfoUtility {
                         priceChange.setTextColor(context.getResources().getColor(R.color.success, context.getTheme()));
                     }
 
-                    if(priceChangePercent != null) priceChange.setText(String.valueOf(stock.getDayPercentChange()));
+                    if(priceChangePercent != null) priceChangePercent.setText(String.valueOf(stock.getDayPercentChange()));
                     if(name != null) {
 
                         name.setText(stock.getName());

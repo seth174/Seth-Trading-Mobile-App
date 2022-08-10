@@ -12,8 +12,8 @@
 
         <View
             android:id="@+id/divider"
-            android:layout_width="3dp"
-            android:layout_height="wrap_content"
+            android:layout_width="1dp"
+            android:layout_height="300dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,61 +66,6 @@
             app:layout_constraintTop_toBottomOf="@+id/divider4" />
 
         <View
-            android:id="@+id/divider6"
-            android:layout_width="409dp"
-            android:layout_height="10dp"
-            android:layout_marginTop="50dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider8" />
-
-        <View
-            android:id="@+id/divider7"
-            android:layout_width="409dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="500dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:id="@+id/divider9"
-            android:layout_width="409dp"
-            android:layout_height="10dp"
-            android:layout_marginTop="50dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider6" />
-
-        <View
-            android:id="@+id/divider10"
-            android:layout_width="409dp"
-            android:layout_height="10dp"
-            android:layout_marginTop="50dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider9" />
-
-        <View
-            android:id="@+id/divider11"
-            android:layout_width="409dp"
-            android:layout_height="10dp"
-            android:layout_marginTop="50dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider10" />
-
-        <View
             android:id="@+id/divider8"
             android:layout_width="409dp"
             android:layout_height="3dp"
@@ -135,19 +80,105 @@
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@string/ticker_label"
             app:layout_constraintBottom_toTopOf="@+id/divider2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="5dp"/>
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/textview_stockinfo_ticker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@+id/divider2"
             app:layout_constraintEnd_toStartOf="@+id/divider"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="5dp"/>
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stock_previous_close_label"
+            app:layout_constraintBottom_toTopOf="@+id/divider2"
+            app:layout_constraintStart_toStartOf="@+id/divider"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.548"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/daily_gain_label"
+            app:layout_constraintBottom_toTopOf="@+id/divider3"
+            app:layout_constraintStart_toStartOf="@+id/divider"
+            app:layout_constraintTop_toTopOf="@+id/divider2"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/daily_percent_change_label"
+            app:layout_constraintBottom_toTopOf="@+id/divider4"
+            app:layout_constraintStart_toStartOf="@+id/divider"
+            app:layout_constraintTop_toTopOf="@+id/divider3"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/current_price_label"
+            app:layout_constraintBottom_toTopOf="@+id/divider5"
+            app:layout_constraintStart_toStartOf="@+id/divider"
+            app:layout_constraintTop_toTopOf="@+id/divider4"
+            app:layout_constraintVertical_bias=".50"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/textview_stockinfo_current_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/divider5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/divider4"
+            android:layout_marginRight="5dp"/>
+
+        <TextView
+            android:id="@+id/textview_stockinfo_daily_percent_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/divider4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/divider3"
+            app:layout_constraintVertical_bias=".50"
+            android:layout_marginRight="5dp"/>
+
+        <TextView
+            android:id="@+id/textview_stockinfo_daily_gain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/divider3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/divider2"
+            android:layout_marginRight="5dp"/>
+
+        <TextView
+            android:id="@+id/textview_stockinfo_previous_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/divider2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias=".50"
+            android:layout_marginRight="5dp"/>
 
         <TextView
             android:id="@+id/textView16"
@@ -155,13 +186,79 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="21dp"
             android:layout_marginBottom="13dp"
-            android:text="TextView"
+            android:text="@string/stock_name_label"
             app:layout_constraintBottom_toTopOf="@+id/divider3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/divider2" />
+            app:layout_constraintTop_toTopOf="@+id/divider2"
+            android:layout_marginLeft="5dp"/>
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/stock_day_high_price_label"
+            app:layout_constraintBottom_toTopOf="@+id/divider4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/divider3"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stock_open_price_label"
+            app:layout_constraintBottom_toTopOf="@+id/divider8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/divider5"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/textview_stockinfo_open_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/divider8"
+            app:layout_constraintEnd_toStartOf="@+id/divider"
+            app:layout_constraintTop_toTopOf="@+id/divider5"
+            app:layout_constraintVertical_bias=".50"
+            android:layout_marginRight="5dp"/>
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stock_day_low_price_label"
+            app:layout_constraintBottom_toTopOf="@+id/divider5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/divider4"
+            app:layout_constraintVertical_bias=".50"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/textview_stockinfo_low_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/divider5"
+            app:layout_constraintEnd_toStartOf="@+id/divider"
+            app:layout_constraintTop_toTopOf="@+id/divider4"
+            android:layout_marginRight="5dp"/>
+
+        <TextView
+            android:id="@+id/textview_stockinfo_high_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/divider4"
+            app:layout_constraintEnd_toStartOf="@+id/divider"
+            app:layout_constraintTop_toTopOf="@+id/divider3"
+            app:layout_constraintVertical_bias=".50"
+            android:layout_marginRight="5dp"/>
+
+        <TextView
+            android:id="@+id/textview_stockinfo_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
@@ -169,6 +266,7 @@
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@+id/divider3"
             app:layout_constraintEnd_toStartOf="@+id/divider"
-            app:layout_constraintTop_toTopOf="@+id/divider2" />
+            app:layout_constraintTop_toTopOf="@+id/divider2"
+            android:layout_marginRight="5dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

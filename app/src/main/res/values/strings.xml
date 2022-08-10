@@ -25,4 +25,11 @@
     <string name="three_month_label">3m</string>
     <string name="six_month_label">6m</string>
     <string name="one_year_label">1y</string>
+
+    <string name="stock_price_label">Stock Price</string>
+    <string name="stock_name_label">Stock Name</string>
+    <string name="stock_day_high_price_label">High Price</string>
+    <string name="stock_day_low_price_label">Low Price</string>
+    <string name="stock_open_price_label">Open Price</string>
+    <string name="stock_previous_close_label">Previous Close</string>
 </resources>
